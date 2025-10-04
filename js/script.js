@@ -35,6 +35,8 @@
     const navMenu = $('#nav-menu');
     const navLinks = $$('.nav-link');
     const contactForm = $('#contact-form');
+    const themeToggle = $('#theme-toggle');
+    const themeIcon = $('.theme-icon');
     
     // ===== NAVBAR FUNCTIONALITY =====
     class NavbarController {
@@ -55,12 +57,12 @@
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
                 if (scrollTop > 100 && !this.isScrolled) {
-                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                    navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                    navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+                    navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
                     this.isScrolled = true;
                 } else if (scrollTop <= 100 && this.isScrolled) {
-                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                    navbar.style.boxShadow = 'none';
+                    navbar.style.background = 'rgba(10, 10, 10, 0.9)';
+                    navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
                     this.isScrolled = false;
                 }
             }, 16);
@@ -200,101 +202,106 @@
             animateElements.forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(el);
             });
         }
 
-        animateSkillBars(skillCategory) {
-            const skillItems = skillCategory.querySelectorAll('.skill-list li');
-            skillItems.forEach((item, index) => {
-                setTimeout(() => {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateX(-20px)';
-                    item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                    
-                    requestAnimationFrame(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateX(0)';
-                    });
-                }, index * 100);
-            });
+        animateSkillBars(element) {
+            // Add skill bar animations if needed
         }
 
-        animateProjectCard(card) {
-            const image = card.querySelector('.project-image');
-            const content = card.querySelector('.project-content');
-            
-            if (image) {
-                image.style.transform = 'scale(1.05)';
-                setTimeout(() => {
-                    image.style.transform = 'scale(1)';
-                }, 300);
-            }
-            
-            if (content) {
-                const tags = content.querySelectorAll('.tag');
-                tags.forEach((tag, index) => {
-                    setTimeout(() => {
-                        tag.style.opacity = '0';
-                        tag.style.transform = 'scale(0.8)';
-                        tag.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                        
-                        requestAnimationFrame(() => {
-                            tag.style.opacity = '1';
-                            tag.style.transform = 'scale(1)';
-                        });
-                    }, index * 100);
-                });
-            }
+        animateProjectCard(element) {
+            // Add project card animations if needed
         }
 
         setupParallaxEffects() {
-            const heroSection = $('.hero');
-            
-            if (heroSection) {
-                const parallaxScroll = throttle(() => {
-                    const scrolled = window.pageYOffset;
-                    const parallax = scrolled * 0.3;
-                    heroSection.style.transform = `translateY(${parallax}px)`;
-                }, 16);
-
-                window.addEventListener('scroll', parallaxScroll);
-            }
+            // Add parallax effects if needed
         }
 
         setupCounterAnimation() {
-            const counters = $$('.highlight-number');
-            
-            const animateCounter = (counter) => {
-                const target = parseInt(counter.textContent.replace(/\D/g, ''));
-                const increment = target / 60;
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = counter.textContent.replace(/\d+/, target);
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = counter.textContent.replace(/\d+/, Math.floor(current));
-                    }
-                }, 50);
-            };
+            // Add counter animations if needed
+        }
 
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        counterObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
+        setupTypingEffect() {
+            // Add typing effects if needed
+        }
+    }
 
-            counters.forEach(counter => {
-                counterObserver.observe(counter);
+    // ===== THEME CONTROLLER =====
+    class ThemeController {
+        constructor() {
+            this.isDark = true; // Default to dark theme
+            this.init();
+        }
+
+        init() {
+            this.applyDarkTheme();
+            this.setupThemeToggle();
+        }
+
+        setupThemeToggle() {
+            themeToggle?.addEventListener('click', () => {
+                this.toggleTheme();
             });
         }
+
+        toggleTheme() {
+            this.isDark = !this.isDark;
+            
+            if (this.isDark) {
+                this.applyDarkTheme();
+            } else {
+                this.applyLightTheme();
+            }
+
+            // Save preference
+            localStorage.setItem('portfolio-theme', this.isDark ? 'dark' : 'light');
+        }
+
+        applyDarkTheme() {
+            document.documentElement.style.setProperty('--primary-color', '#ff6b35');
+            document.documentElement.style.setProperty('--text-primary', '#ffffff');
+            document.documentElement.style.setProperty('--text-secondary', '#b8bcc8');
+            document.documentElement.style.setProperty('--bg-primary', '#0a0a0a');
+            document.documentElement.style.setProperty('--bg-secondary', '#141414');
+            document.documentElement.style.setProperty('--bg-card', '#1a1a1a');
+            document.documentElement.style.setProperty('--border-light', '#2a2a2a');
+            
+            if (themeIcon) {
+                themeIcon.textContent = '🌞'; // Sun icon for light mode toggle
+            }
+        }
+
+        applyLightTheme() {
+            document.documentElement.style.setProperty('--primary-color', '#2563eb');
+            document.documentElement.style.setProperty('--text-primary', '#111827');
+            document.documentElement.style.setProperty('--text-secondary', '#6b7280');
+            document.documentElement.style.setProperty('--bg-primary', '#ffffff');
+            document.documentElement.style.setProperty('--bg-secondary', '#f9fafb');
+            document.documentElement.style.setProperty('--bg-card', '#ffffff');
+            document.documentElement.style.setProperty('--border-light', '#e5e7eb');
+            
+            if (themeIcon) {
+                themeIcon.textContent = '🌙'; // Moon icon for dark mode toggle
+            }
+        }
+
+        loadSavedTheme() {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme) {
+                this.isDark = savedTheme === 'dark';
+            }
+        }
+    }
+
+    // ===== INITIALIZE CONTROLLERS =====
+    document.addEventListener('DOMContentLoaded', () => {
+        new NavbarController();
+        new AnimationController();
+        new ThemeController();
+    });
+
+})();
 
         setupTypingEffect() {
             const titleLines = $$('.title-line');
