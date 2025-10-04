@@ -1,0 +1,77 @@
+{
+  "project_template": {
+    "name": "Project Name",
+    "description": "Detailed description of the project, its purpose, and key achievements. Should be 2-3 sentences highlighting enterprise value.",
+    "github_repo": "repository-name",
+    "technologies": [
+      "Primary Technology",
+      "Framework",
+      "Database/Storage",
+      "Additional Tools"
+    ],
+    "features": [
+      "Key Feature 1",
+      "Key Feature 2", 
+      "Key Feature 3",
+      "Key Feature 4"
+    ],
+    "categories": [
+      "networking",
+      "security",
+      "monitoring",
+      "automation"
+    ],
+    "icon": "fas fa-network-wired",
+    "badges": [
+      "Production Ready",
+      "Featured",
+      "AI Powered",
+      "Security Focus"
+    ],
+    "lines_of_code": 2500,
+    "live_demo_url": "#"
+  },
+  "category_guidelines": {
+    "networking": "Network infrastructure, protocols, configuration, topology",
+    "security": "Vulnerability scanning, penetration testing, compliance, encryption",
+    "monitoring": "Performance monitoring, alerting, metrics collection, dashboards",
+    "automation": "Configuration management, deployment automation, orchestration",
+    "analytics": "Data analysis, reporting, business intelligence, ML/AI"
+  },
+  "icon_suggestions": {
+    "networking": "fas fa-network-wired",
+    "security": "fas fa-shield-alt",
+    "monitoring": "fas fa-chart-line",
+    "automation": "fas fa-cogs",
+    "analytics": "fas fa-brain",
+    "database": "fas fa-database",
+    "web": "fas fa-globe",
+    "mobile": "fas fa-mobile-alt",
+    "cloud": "fas fa-cloud",
+    "api": "fas fa-plug"
+  },
+  "technology_mapping": {
+    "python": "Python",
+    "flask": "Flask",
+    "django": "Django",
+    "nodejs": "Node.js",
+    "react": "React",
+    "vue": "Vue.js",
+    "docker": "Docker",
+    "kubernetes": "Kubernetes",
+    "redis": "Redis",
+    "postgresql": "PostgreSQL",
+    "mysql": "MySQL",
+    "mongodb": "MongoDB",
+    "elasticsearch": "Elasticsearch",
+    "nginx": "Nginx",
+    "apache": "Apache",
+    "linux": "Linux",
+    "windows": "Windows Server",
+    "cisco": "Cisco IOS",
+    "vmware": "VMware",
+    "aws": "AWS",
+    "azure": "Azure",
+    "gcp": "Google Cloud"
+  }
+}
