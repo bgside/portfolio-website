@@ -1,6 +1,6 @@
 # Portfolio Website - Hardware Hacker & IT Manager
 
-A modern, responsive portfolio website for a Computer Science Engineer specializing in hardware hacking and IT management. This project showcases technical expertise, professional experience, and innovative projects in an engaging, interactive format.
+My personal portfolio website showcasing my expertise as a Computer Science Engineer specializing in hardware hacking and IT management. Built from scratch to highlight my technical skills, professional experience, and innovative projects.
 
 ![Portfolio Preview](https://via.placeholder.com/800x400/2563eb/ffffff?text=Portfolio+Website)
 
@@ -121,14 +121,14 @@ portfolio-website/
 
 ### Personal Information
 1. **Update HTML content** in `index.html`:
-   - Replace placeholder text with your information
+   - Customize content with specific information
    - Update contact details and social links
-   - Modify project descriptions and achievements
+   - Add specific project descriptions and achievements
 
 2. **Update CSS variables** in `css/style.css`:
    ```css
    :root {
-     --primary-color: #2563eb;    /* Your brand color */
+     --primary-color: #2563eb;    /* Brand color */
      --accent-color: #10b981;     /* Accent color */
      --font-family: 'Inter', sans-serif; /* Typography */
    }
@@ -253,21 +253,21 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ## 📞 Support
 
-If you have any questions or need help with customization:
+For questions or collaboration opportunities:
 
-- 📧 Email: contact@example.com
-- 💼 LinkedIn: [linkedin.com/in/example](https://linkedin.com/in/example)
-- 🐙 GitHub: [github.com/example](https://github.com/example)
+- 📧 Email: bgside2368@gmail.com
+- 💼 LinkedIn: [linkedin.com/in/bgside](https://linkedin.com/in/bgside)
+- 🐙 GitHub: [github.com/bgside](https://github.com/bgside)
 
 ## 🙏 Acknowledgments
 
 - [Inter Font](https://fonts.google.com/specimen/Inter) by Google Fonts
 - Icons and emojis from various open-source projects
-- Inspiration from the hardware hacking and IT management community
-- Modern web development best practices and standards
+- Inspired by the hardware hacking and IT management community
+- Built following modern web development best practices
 
 ---
 
-**Built with ❤️ for hardware hackers and IT professionals**
+**Crafted with passion for hardware hacking and IT excellence**
 
 *Last updated: October 2024*

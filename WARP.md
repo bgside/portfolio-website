@@ -1,6 +1,6 @@
-# WARP.md
+# Development Guide
 
-This file provides guidance to WARP (warp.dev) when working with code in this repository.
+This file provides guidance for developers working with this portfolio website codebase.
 
 ## Overview
 

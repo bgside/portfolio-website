@@ -28,19 +28,19 @@
     "professional-website"
   ],
   "author": {
-    "name": "Hardware Hacker & IT Manager",
-    "email": "contact@example.com",
-    "url": "https://your-portfolio-domain.com"
+    "name": "hex41414141",
+    "email": "bgside2368@gmail.com",
+    "url": "https://bgside.github.io/portfolio-website"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/portfolio-website.git"
+    "url": "https://github.com/bgside/portfolio-website.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/portfolio-website/issues"
+    "url": "https://github.com/bgside/portfolio-website/issues"
   },
-  "homepage": "https://your-portfolio-domain.com",
+  "homepage": "https://bgside.github.io/portfolio-website",
   "devDependencies": {
     "live-server": "^1.2.2",
     "clean-css-cli": "^5.6.2",
@@ -100,6 +100,6 @@
   },
   "funding": {
     "type": "individual",
-    "url": "https://github.com/sponsors/your-username"
+    "url": "https://github.com/sponsors/bgside"
   }
 }
