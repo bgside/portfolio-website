@@ -1,0 +1,105 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for a Hardware Hacking & Computer Science Engineer who works as an IT Manager",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --host=localhost --open=/",
+    "dev": "live-server --port=3000 --host=localhost --open=/ --watch=css,js",
+    "build": "npm run minify-css && npm run minify-js && npm run optimize-images",
+    "minify-css": "cleancss -o dist/css/style.min.css css/style.css",
+    "minify-js": "terser js/script.js -o dist/js/script.min.js --compress --mangle",
+    "optimize-images": "imagemin images/* --out-dir=dist/images",
+    "deploy": "npm run build && gh-pages -d dist",
+    "lint": "eslint js/**/*.js",
+    "lint:fix": "eslint js/**/*.js --fix",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "validate-html": "html-validate index.html",
+    "test": "echo \"No tests specified\" && exit 0",
+    "serve": "http-server -p 8080 -o"
+  },
+  "keywords": [
+    "portfolio",
+    "hardware-hacking",
+    "computer-science",
+    "it-manager",
+    "web-development",
+    "responsive-design",
+    "professional-website"
+  ],
+  "author": {
+    "name": "Hardware Hacker & IT Manager",
+    "email": "contact@example.com",
+    "url": "https://your-portfolio-domain.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/portfolio-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/portfolio-website/issues"
+  },
+  "homepage": "https://your-portfolio-domain.com",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "clean-css-cli": "^5.6.2",
+    "terser": "^5.19.2",
+    "imagemin": "^8.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0",
+    "html-validate": "^8.2.0",
+    "gh-pages": "^6.0.0",
+    "http-server": "^14.1.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie <= 11"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-unused-vars": "error",
+      "prefer-const": "error",
+      "no-var": "error"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100,
+    "tabWidth": 2,
+    "useTabs": false
+  },
+  "dependencies": {},
+  "optionalDependencies": {},
+  "config": {
+    "port": 3000,
+    "host": "localhost"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/your-username"
+  }
+}
