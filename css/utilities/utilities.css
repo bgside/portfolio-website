@@ -43,24 +43,29 @@
     z-index: -1;
 }
 
-/* Buttons */
+/* ===== ENHANCED BUTTON SYSTEM ===== */
 .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     padding: 1rem 2rem;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
     border: none;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition-bounce);
     position: relative;
     overflow: hidden;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
+/* ✨ Enhanced Button Shine Effect */
 .btn::before {
     content: '';
     position: absolute;
@@ -68,57 +73,117 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.6s;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: var(--transition-slow);
 }
 
 .btn:hover::before {
     left: 100%;
 }
 
+/* 🎨 Primary Button - Modern Gradient */
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    background: var(--bg-button-gradient);
     color: white;
-    box-shadow: 0 4px 20px var(--shadow-colored);
+    box-shadow:
+        var(--shadow-lg),
+        0 0 20px var(--primary-glow),
+        0 0 40px rgba(99, 102, 241, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px var(--shadow-colored);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-color));
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        var(--shadow-xl),
+        0 0 30px var(--primary-glow),
+        0 0 60px rgba(99, 102, 241, 0.3);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
+/* 🌊 Secondary Button - Glass Effect */
 .btn-secondary {
-    background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    box-shadow: inset 0 0 0 0 var(--primary-color);
-    transition: all 0.3s ease;
+    background: var(--bg-glass-morphism);
+    color: var(--text-primary);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow:
+        var(--shadow-md),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
-    color: var(--bg-primary);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px var(--shadow-colored);
+    background: rgba(99, 102, 241, 0.2);
+    color: var(--primary-color);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        var(--shadow-xl),
+        0 0 25px var(--primary-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     border-color: var(--primary-color);
 }
 
+/* ⚡ Outline Button - Neon Effect */
 .btn-outline {
     background: transparent;
     color: var(--accent-color);
     border: 2px solid var(--accent-color);
-    box-shadow: inset 0 0 0 0 var(--accent-color);
-    transition: all 0.3s ease;
+    box-shadow:
+        var(--shadow),
+        0 0 15px rgba(245, 158, 11, 0.3),
+        inset 0 0 0 0 var(--accent-color);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-outline:hover {
     background: var(--accent-color);
     color: var(--bg-primary);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(6, 182, 212, 0.3);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        var(--shadow-xl),
+        0 0 25px var(--accent-glow),
+        0 0 50px rgba(245, 158, 11, 0.4);
     border-color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(15, 23, 42, 0.8);
+}
+
+/* 💎 Enhanced Button States */
+.btn:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: var(--shadow-sm);
+}
+
+/* 📱 Button Sizes */
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn-lg {
+    padding: 1.5rem 3rem;
+    font-size: 1.125rem;
+}
+
+/* 🎯 Button with Icons */
+.btn i {
+    font-size: 1.1em;
+    transition: var(--transition-fast);
+}
+
+.btn:hover i {
+    transform: scale(1.1) rotate(5deg);
 }
 
 /* Form Elements */
