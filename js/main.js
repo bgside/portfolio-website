@@ -36,6 +36,10 @@ class PortfolioApp {
 
     async initializeModules() {
         try {
+            // Initialize core services first
+            this.modules.seo = new SEOService();
+            this.modules.pwa = new PWAService();
+
             // Initialize theme controller
             this.modules.theme = new ThemeController();
 
