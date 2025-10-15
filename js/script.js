@@ -294,18 +294,217 @@
         }
     }
 
-    // ===== PROJECT FILTERING SYSTEM =====
-    class ProjectFilterController {
+    // ===== PROJECT LOADING AND FILTERING SYSTEM =====
+    class ProjectController {
         constructor() {
             this.filterButtons = $$('.filter-btn');
-            this.projectCards = $$('.project-card');
+            this.projectsContainer = $('.projects-grid');
+            this.projectsData = null;
+            this.filteredProjects = [];
             this.currentFilter = 'all';
+            this.isLoading = false;
             this.init();
         }
 
-        init() {
+        async init() {
+            await this.loadProjectsData();
             this.setupFilterButtons();
-            this.setupProjectCards();
+            this.applyFilter('all');
+        }
+
+        async loadProjectsData() {
+            if (this.isLoading) return;
+
+            this.isLoading = true;
+            this.showLoadingState();
+
+            try {
+                const response = await fetch('./project-list.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                this.projectsData = data;
+                this.generateProjectCards();
+                this.hideLoadingState();
+
+            } catch (error) {
+                console.error('Error loading projects data:', error);
+                this.showErrorState();
+            } finally {
+                this.isLoading = false;
+            }
+        }
+
+        generateProjectCards() {
+            if (!this.projectsData || !this.projectsContainer) return;
+
+            // Clear existing projects (remove hardcoded ones)
+            this.projectsContainer.innerHTML = '';
+
+            // Flatten all projects from categories
+            const allProjects = [];
+            Object.values(this.projectsData.projects).forEach(categoryProjects => {
+                allProjects.push(...categoryProjects);
+            });
+
+            // Sort projects by priority
+            allProjects.sort((a, b) => (a.priority || 999) - (b.priority || 999));
+
+            // Generate cards for each project
+            allProjects.forEach((project, index) => {
+                setTimeout(() => {
+                    const projectCard = this.createProjectCard(project);
+                    this.projectsContainer.appendChild(projectCard);
+                }, index * 50); // Stagger animation
+            });
+        }
+
+        createProjectCard(project) {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.setAttribute('data-categories', this.getProjectCategories(project));
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+
+            const technologies = project.technologies || [];
+            const tags = this.generateTags(technologies, project);
+
+            card.innerHTML = `
+                <div class="project-image">
+                    <div class="project-placeholder ${this.getProjectTypeClass(project.name)}"></div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">${this.escapeHtml(project.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))}</h3>
+                    <p class="project-description">${this.escapeHtml(project.description)}</p>
+                    <div class="project-tags">
+                        ${tags}
+                    </div>
+                    <div class="project-links">
+                        ${this.generateProjectLinks(project)}
+                    </div>
+                </div>
+            `;
+
+            // Animate in after creation
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+
+            return card;
+        }
+
+        getProjectCategories(project) {
+            const categories = [];
+
+            // Map project technologies and names to filter categories
+            const techStack = (project.technologies || []).join(' ').toLowerCase();
+            const name = project.name.toLowerCase();
+
+            if (techStack.includes('python') && (techStack.includes('ai') || techStack.includes('ml') || techStack.includes('tensorflow'))) {
+                categories.push('ai-ml');
+            }
+            if (techStack.includes('network') || name.includes('network') || name.includes('sdn') || name.includes('vlan') ||
+                name.includes('topology') || name.includes('qos') || name.includes('wireless') || name.includes('cisco')) {
+                categories.push('networking');
+            }
+            if (techStack.includes('kubernetes') || techStack.includes('docker') || name.includes('infrastructure') ||
+                name.includes('automation') || name.includes('gitops') || name.includes('iac') || name.includes('vmware') ||
+                name.includes('proxmox') || name.includes('ansible')) {
+                categories.push('infrastructure');
+            }
+            if (techStack.includes('security') || name.includes('security') || name.includes('sase') ||
+                name.includes('vulnerability') || name.includes('penetration')) {
+                categories.push('security');
+            }
+            if (techStack.includes('php') || techStack.includes('laravel') || techStack.includes('vue') ||
+                techStack.includes('html') || techStack.includes('css') || techStack.includes('javascript') ||
+                name.includes('cms') || name.includes('web')) {
+                categories.push('web-dev');
+            }
+
+            return categories.join(' ');
+        }
+
+        generateTags(technologies, project) {
+            const tags = [];
+
+            // Add technology tags
+            technologies.slice(0, 4).forEach(tech => {
+                tags.push(`<span class="tag">${this.escapeHtml(tech)}</span>`);
+            });
+
+            // Add category-based tags
+            const categories = this.getProjectCategories(project);
+            if (categories.includes('ai-ml')) tags.push('<span class="tag">AI/ML</span>');
+            if (categories.includes('networking')) tags.push('<span class="tag">Networking</span>');
+            if (categories.includes('infrastructure')) tags.push('<span class="tag">Infrastructure</span>');
+            if (categories.includes('security')) tags.push('<span class="tag">Security</span>');
+            if (categories.includes('web-dev')) tags.push('<span class="tag">Web Development</span>');
+
+            return tags.join('');
+        }
+
+        generateProjectLinks(project) {
+            // For now, most projects won't have live demos, so we'll primarily link to GitHub
+            // This can be enhanced later with actual project URLs
+            const githubUrl = `https://github.com/bgside/${project.name}`;
+
+            return `<a href="${githubUrl}" class="project-link" target="_blank">GitHub</a>`;
+        }
+
+        getProjectTypeClass(projectName) {
+            const name = projectName.toLowerCase();
+
+            if (name.includes('ai') || name.includes('ml') || name.includes('analytics')) return 'ai';
+            if (name.includes('network') || name.includes('sdn') || name.includes('cisco')) return 'network';
+            if (name.includes('security') || name.includes('vulnerability')) return 'security';
+            if (name.includes('web') || name.includes('cms') || name.includes('laravel')) return 'webdev';
+            if (name.includes('infrastructure') || name.includes('automation') || name.includes('iac')) return 'infrastructure';
+            if (name.includes('iot') || name.includes('device')) return 'iot';
+            if (name.includes('kubernetes') || name.includes('docker')) return 'devops';
+
+            return 'default';
+        }
+
+        escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        showLoadingState() {
+            if (this.projectsContainer) {
+                this.projectsContainer.innerHTML = `
+                    <div class="loading-state" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <div class="loading-spinner" style="width: 40px; height: 40px; border: 4px solid #333; border-top: 4px solid #ff6b35; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+                        <p>Loading projects...</p>
+                    </div>
+                `;
+            }
+        }
+
+        hideLoadingState() {
+            const loadingState = this.projectsContainer?.querySelector('.loading-state');
+            if (loadingState) {
+                loadingState.remove();
+            }
+        }
+
+        showErrorState() {
+            if (this.projectsContainer) {
+                this.projectsContainer.innerHTML = `
+                    <div class="error-state" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #ff6b35;">
+                        <div class="error-icon" style="font-size: 48px; margin-bottom: 20px;">⚠️</div>
+                        <h3>Failed to Load Projects</h3>
+                        <p>Unable to load project data. Please try refreshing the page.</p>
+                        <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #ff6b35; color: white; border: none; border-radius: 5px; cursor: pointer;">Retry</button>
+                    </div>
+                `;
+            }
         }
 
         setupFilterButtons() {
@@ -369,44 +568,64 @@
         }
 
         applyFilter(filter) {
-            if (this.currentFilter === filter) return;
-            
+            if (this.currentFilter === filter || !this.projectsData) return;
+
             this.currentFilter = filter;
-            
+
             // Update active button
             this.filterButtons.forEach(btn => btn.classList.remove('active'));
             const activeButton = $(`.filter-btn[data-filter="${filter}"]`);
             if (activeButton) {
                 activeButton.classList.add('active');
             }
-            
-            // Filter projects with animation
-            this.projectCards.forEach((card, index) => {
-                const categories = card.getAttribute('data-categories') || '';
-                const shouldShow = filter === 'all' || categories.includes(filter);
-                
-                if (shouldShow) {
-                    setTimeout(() => {
-                        card.style.display = 'block';
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px) scale(0.95)';
-                        
-                        setTimeout(() => {
-                            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0) scale(1)';
-                        }, 50);
-                    }, index * 100);
-                } else {
-                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(-20px) scale(0.95)';
-                    
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
+
+            // Clear current projects
+            if (this.projectsContainer) {
+                this.projectsContainer.innerHTML = '';
+            }
+
+            // Filter and regenerate projects
+            const allProjects = [];
+            Object.values(this.projectsData.projects).forEach(categoryProjects => {
+                allProjects.push(...categoryProjects);
             });
+
+            // Filter projects based on category
+            let filteredProjects = allProjects;
+            if (filter !== 'all') {
+                filteredProjects = allProjects.filter(project => {
+                    const categories = this.getProjectCategories(project);
+                    return categories.includes(filter);
+                });
+            }
+
+            // Sort by priority
+            filteredProjects.sort((a, b) => (a.priority || 999) - (b.priority || 999));
+
+            // Show filtered projects
+            filteredProjects.forEach((project, index) => {
+                setTimeout(() => {
+                    const projectCard = this.createProjectCard(project);
+                    this.projectsContainer?.appendChild(projectCard);
+                }, index * 50);
+            });
+
+            // Show message if no projects found
+            if (filteredProjects.length === 0) {
+                this.showNoProjectsMessage(filter);
+            }
+        }
+
+        showNoProjectsMessage(filter) {
+            if (this.projectsContainer) {
+                this.projectsContainer.innerHTML = `
+                    <div class="no-projects-state" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #888;">
+                        <div class="no-projects-icon" style="font-size: 48px; margin-bottom: 20px;">🔍</div>
+                        <h3>No Projects Found</h3>
+                        <p>No projects match the "${filter}" filter. Try selecting a different category.</p>
+                    </div>
+                `;
+            }
         }
     }
 
@@ -462,7 +681,7 @@
         new NavbarController();
         new AnimationController();
         new ThemeController();
-        new ProjectFilterController();
+        new ProjectController();
         new ParticleSystem();
     });
 

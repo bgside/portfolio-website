@@ -1,0 +1,117 @@
+/* ===== ANIMATIONS & KEYFRAMES ===== */
+
+/* Page Load Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 0.7;
+    }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 20px var(--orange-glow);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+        box-shadow: 0 0 40px var(--orange-glow);
+    }
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Right Animation */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Particle Float Animation */
+@keyframes particle-float {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(90vh) scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(10vh) scale(1);
+    }
+    100% {
+        transform: translateY(0vh) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Floating Element Animation */
+@keyframes float-element {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-15px) rotate(90deg);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-30px) rotate(180deg);
+        opacity: 0.5;
+    }
+    75% {
+        transform: translateY(-15px) rotate(270deg);
+        opacity: 0.8;
+    }
+}
+
+/* Slide In Left Animation */
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Spin Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

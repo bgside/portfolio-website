@@ -1,0 +1,101 @@
+/* ===== MAIN STYLESHEET ===== */
+/* Modern, organized CSS architecture for portfolio website */
+
+/* Base Styles */
+@import url('./base/variables.css');
+@import url('./base/reset.css');
+
+/* Utilities */
+@import url('./utilities/animations.css');
+@import url('./utilities/utilities.css');
+
+/* Components */
+@import url('./components/navigation.css');
+@import url('./components/hero.css');
+
+/* Sections */
+@import url('./sections/about.css');
+@import url('./sections/skills.css');
+@import url('./sections/projects.css');
+@import url('./sections/experience.css');
+@import url('./sections/contact.css');
+
+/* Layout */
+@import url('./layout/footer.css');
+
+/* Responsive Design */
+@import url('./layout/responsive.css');
+
+/* ===== ADDITIONAL GLOBAL STYLES ===== */
+
+/* Ensure smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Improve font rendering */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default focus outline and add custom one */
+*:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Ensure images are responsive by default */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Improve text selection */
+::selection {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Print styles */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    .navbar,
+    .theme-toggle,
+    .hamburger {
+        display: none !important;
+    }
+
+    .hero,
+    .about,
+    .skills,
+    .projects,
+    .experience,
+    .contact {
+        page-break-inside: avoid;
+    }
+}

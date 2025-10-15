@@ -1,0 +1,142 @@
+/* ===== CONTACT SECTION ===== */
+.contact {
+    padding: var(--section-padding);
+    background: var(--bg-darker);
+    color: white;
+}
+
+.contact .section-title {
+    color: white;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-description {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.contact-method:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(0.5rem);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    border-radius: 50%;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-label {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+.contact-value {
+    color: white;
+    font-weight: 500;
+}
+
+/* Form Styles */
+.form {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-submit {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-methods {
+        gap: 1rem;
+    }
+
+    .contact-method {
+        padding: 0.75rem;
+    }
+
+    .form {
+        padding: 1.5rem;
+    }
+}
