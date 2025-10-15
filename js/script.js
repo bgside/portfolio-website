@@ -294,333 +294,176 @@
         }
     }
 
+    // ===== PROJECT FILTERING SYSTEM =====
+    class ProjectFilterController {
+        constructor() {
+            this.filterButtons = $$('.filter-btn');
+            this.projectCards = $$('.project-card');
+            this.currentFilter = 'all';
+            this.init();
+        }
+
+        init() {
+            this.setupFilterButtons();
+            this.setupProjectCards();
+        }
+
+        setupFilterButtons() {
+            this.filterButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const filter = button.getAttribute('data-filter');
+                    this.applyFilter(filter);
+                });
+            });
+        }
+
+        setupProjectCards() {
+            this.projectCards.forEach(card => {
+                // Add initial fade-in animation
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                // Add category data attributes based on tags
+                this.categorizeProject(card);
+                
+                // Animate in after a short delay
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, Math.random() * 500);
+            });
+        }
+
+        categorizeProject(card) {
+            const tags = card.querySelectorAll('.tag');
+            const categories = [];
+            
+            tags.forEach(tag => {
+                const tagText = tag.textContent.toLowerCase();
+                
+                if (tagText.includes('ai') || tagText.includes('ml') || tagText.includes('tensorflow')) {
+                    categories.push('ai-ml');
+                }
+                if (tagText.includes('network') || tagText.includes('sdn') || tagText.includes('vlan') || 
+                    tagText.includes('topology') || tagText.includes('qos') || tagText.includes('wireless')) {
+                    categories.push('networking');
+                }
+                if (tagText.includes('kubernetes') || tagText.includes('docker') || tagText.includes('infrastructure') || 
+                    tagText.includes('automation') || tagText.includes('gitops') || tagText.includes('iac')) {
+                    categories.push('infrastructure');
+                }
+                if (tagText.includes('security') || tagText.includes('sase') || tagText.includes('zero trust')) {
+                    categories.push('security');
+                }
+                if (tagText.includes('php') || tagText.includes('laravel') || tagText.includes('vue') || 
+                    tagText.includes('html') || tagText.includes('css') || tagText.includes('javascript')) {
+                    categories.push('web-dev');
+                }
+            });
+            
+            if (categories.length > 0) {
+                card.setAttribute('data-categories', categories.join(' '));
+            }
+        }
+
+        applyFilter(filter) {
+            if (this.currentFilter === filter) return;
+            
+            this.currentFilter = filter;
+            
+            // Update active button
+            this.filterButtons.forEach(btn => btn.classList.remove('active'));
+            const activeButton = $(`.filter-btn[data-filter="${filter}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // Filter projects with animation
+            this.projectCards.forEach((card, index) => {
+                const categories = card.getAttribute('data-categories') || '';
+                const shouldShow = filter === 'all' || categories.includes(filter);
+                
+                if (shouldShow) {
+                    setTimeout(() => {
+                        card.style.display = 'block';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px) scale(0.95)';
+                        
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0) scale(1)';
+                        }, 50);
+                    }, index * 100);
+                } else {
+                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(-20px) scale(0.95)';
+                    
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+    }
+
+    // ===== PARTICLE SYSTEM =====
+    class ParticleSystem {
+        constructor() {
+            this.particles = [];
+            this.particleContainer = $('#hero-particles');
+            this.init();
+        }
+
+        init() {
+            this.createParticles();
+            this.animateParticles();
+        }
+
+        createParticles() {
+            if (!this.particleContainer) return;
+
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    this.createParticle();
+                }, i * 200);
+            }
+        }
+
+        createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            
+            this.particleContainer.appendChild(particle);
+            this.particles.push(particle);
+
+            // Remove particle after animation
+            setTimeout(() => {
+                particle.remove();
+                this.particles = this.particles.filter(p => p !== particle);
+            }, 15000);
+        }
+
+        animateParticles() {
+            setInterval(() => {
+                this.createParticle();
+            }, 2000);
+        }
+    }
+
     // ===== INITIALIZE CONTROLLERS =====
     document.addEventListener('DOMContentLoaded', () => {
         new NavbarController();
         new AnimationController();
         new ThemeController();
+        new ProjectFilterController();
+        new ParticleSystem();
     });
-
-})();
-
-        setupTypingEffect() {
-            const titleLines = $$('.title-line');
-            
-            titleLines.forEach((line, index) => {
-                const text = line.textContent;
-                line.textContent = '';
-                line.style.opacity = '1';
-                
-                setTimeout(() => {
-                    let charIndex = 0;
-                    const typeInterval = setInterval(() => {
-                        line.textContent += text[charIndex];
-                        charIndex++;
-                        
-                        if (charIndex >= text.length) {
-                            clearInterval(typeInterval);
-                        }
-                    }, 100);
-                }, index * 1000);
-            });
-        }
-    }
-
-    // ===== FORM HANDLING =====
-    class FormController {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            this.setupContactForm();
-            this.setupFormValidation();
-        }
-
-        setupContactForm() {
-            contactForm?.addEventListener('submit', (e) => {
-                e.preventDefault();
-                this.handleFormSubmission(e.target);
-            });
-        }
-
-        handleFormSubmission(form) {
-            const formData = new FormData(form);
-            const submitButton = form.querySelector('.form-submit');
-            const originalText = submitButton.textContent;
-            
-            // Show loading state
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            
-            // Simulate form submission (replace with actual endpoint)
-            setTimeout(() => {
-                this.showFormFeedback('success', 'Message sent successfully!');
-                form.reset();
-                
-                // Reset button
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            }, 2000);
-        }
-
-        showFormFeedback(type, message) {
-            // Remove existing feedback
-            const existingFeedback = $('.form-feedback');
-            existingFeedback?.remove();
-            
-            // Create feedback element
-            const feedback = document.createElement('div');
-            feedback.className = `form-feedback ${type}`;
-            feedback.textContent = message;
-            feedback.style.cssText = `
-                margin-top: 1rem;
-                padding: 0.75rem;
-                border-radius: 8px;
-                font-weight: 500;
-                text-align: center;
-                background: ${type === 'success' ? '#10b981' : '#ef4444'};
-                color: white;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            `;
-            
-            contactForm.appendChild(feedback);
-            
-            // Animate in
-            requestAnimationFrame(() => {
-                feedback.style.opacity = '1';
-            });
-            
-            // Remove after 5 seconds
-            setTimeout(() => {
-                feedback.style.opacity = '0';
-                setTimeout(() => feedback.remove(), 300);
-            }, 5000);
-        }
-
-        setupFormValidation() {
-            const inputs = $$('.form-input, .form-textarea');
-            
-            inputs.forEach(input => {
-                input.addEventListener('blur', () => {
-                    this.validateInput(input);
-                });
-                
-                input.addEventListener('input', () => {
-                    this.clearInputError(input);
-                });
-            });
-        }
-
-        validateInput(input) {
-            const value = input.value.trim();
-            const type = input.type;
-            let isValid = true;
-            let errorMessage = '';
-            
-            // Basic validation
-            if (input.required && !value) {
-                isValid = false;
-                errorMessage = 'This field is required';
-            } else if (type === 'email' && value && !this.isValidEmail(value)) {
-                isValid = false;
-                errorMessage = 'Please enter a valid email address';
-            }
-            
-            if (!isValid) {
-                this.showInputError(input, errorMessage);
-            } else {
-                this.clearInputError(input);
-            }
-            
-            return isValid;
-        }
-
-        showInputError(input, message) {
-            this.clearInputError(input);
-            
-            const errorElement = document.createElement('div');
-            errorElement.className = 'input-error';
-            errorElement.textContent = message;
-            errorElement.style.cssText = `
-                color: #ef4444;
-                font-size: 0.875rem;
-                margin-top: 0.25rem;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            `;
-            
-            input.parentNode.appendChild(errorElement);
-            input.style.borderColor = '#ef4444';
-            
-            requestAnimationFrame(() => {
-                errorElement.style.opacity = '1';
-            });
-        }
-
-        clearInputError(input) {
-            const errorElement = input.parentNode.querySelector('.input-error');
-            errorElement?.remove();
-            input.style.borderColor = '';
-        }
-
-        isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-    }
-
-    // ===== THEME CONTROLLER =====
-    class ThemeController {
-        constructor() {
-            this.currentTheme = localStorage.getItem('portfolio-theme') || 'light';
-            this.init();
-        }
-
-        init() {
-            this.applyTheme(this.currentTheme);
-            this.createThemeToggle();
-        }
-
-        createThemeToggle() {
-            const themeToggle = document.createElement('button');
-            themeToggle.className = 'theme-toggle';
-            themeToggle.innerHTML = this.currentTheme === 'light' ? '🌙' : '☀️';
-            themeToggle.style.cssText = `
-                position: fixed;
-                bottom: 2rem;
-                right: 2rem;
-                width: 3rem;
-                height: 3rem;
-                border-radius: 50%;
-                border: none;
-                background: var(--primary-color);
-                color: white;
-                font-size: 1.2rem;
-                cursor: pointer;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                transition: transform 0.3s ease;
-                z-index: 1000;
-            `;
-            
-            themeToggle.addEventListener('click', () => {
-                this.toggleTheme();
-            });
-            
-            themeToggle.addEventListener('mouseenter', () => {
-                themeToggle.style.transform = 'scale(1.1)';
-            });
-            
-            themeToggle.addEventListener('mouseleave', () => {
-                themeToggle.style.transform = 'scale(1)';
-            });
-            
-            document.body.appendChild(themeToggle);
-        }
-
-        toggleTheme() {
-            this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-            this.applyTheme(this.currentTheme);
-            localStorage.setItem('portfolio-theme', this.currentTheme);
-            
-            const toggle = $('.theme-toggle');
-            toggle.innerHTML = this.currentTheme === 'light' ? '🌙' : '☀️';
-        }
-
-        applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-        }
-    }
-
-    // ===== PERFORMANCE OPTIMIZATION =====
-    class PerformanceOptimizer {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            this.setupLazyLoading();
-            this.prefetchResources();
-            this.optimizeAnimations();
-        }
-
-        setupLazyLoading() {
-            // Lazy load images when they come into view
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-
-            $$('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-
-        prefetchResources() {
-            // Prefetch critical resources
-            const criticalResources = [
-                'css/style.css',
-                'js/script.js'
-            ];
-
-            criticalResources.forEach(resource => {
-                const link = document.createElement('link');
-                link.rel = 'prefetch';
-                link.href = resource;
-                document.head.appendChild(link);
-            });
-        }
-
-        optimizeAnimations() {
-            // Reduce animations on low-performance devices
-            if (window.navigator.hardwareConcurrency < 4) {
-                document.documentElement.style.setProperty('--transition', 'none');
-                document.documentElement.style.setProperty('--transition-fast', 'none');
-            }
-        }
-    }
-
-    // ===== INITIALIZATION =====
-    class PortfolioApp {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            // Wait for DOM to be fully loaded
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => {
-                    this.initializeComponents();
-                });
-            } else {
-                this.initializeComponents();
-            }
-        }
-
-        initializeComponents() {
-            try {
-                // Initialize all controllers
-                new NavbarController();
-                new AnimationController();
-                new FormController();
-                new ThemeController();
-                new PerformanceOptimizer();
-                
-                console.log('Portfolio initialized successfully! 🚀');
-            } catch (error) {
-                console.error('Error initializing portfolio:', error);
-            }
-        }
-    }
-
-    // ===== START APPLICATION =====
-    new PortfolioApp();
 
 })();
