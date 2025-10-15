@@ -1,0 +1,47 @@
+{
+  "personal": {
+    "name": "Ali Emad SALEH",
+    "email": "ali.emad.saleh@example.com",
+    "github_username": "bgside",
+    "website": "https://bgside.github.io/portfolio-website",
+    "linkedin": "https://www.linkedin.com/in/hex41414141/",
+    "twitter": "@bgside",
+    "location": "Damascus, Syria",
+    "bio": "Senior IT Infrastructure Specialist with 5+ years of experience in networking, virtualization, and government technology solutions. Expert in managing enterprise systems serving 1600+ users and 50,000+ citizens.",
+    "tagline": "Building robust infrastructure solutions for enterprise and government sectors.",
+    "skills": [
+      "Network Infrastructure", "VMware vSphere", "Proxmox", "Python", "PHP", 
+      "Laravel", "React", "Node.js", "Cisco", "Security", "Government Tech", "DevOps"
+    ]
+  },
+  "branding": {
+    "primary_color": "#2563eb",
+    "secondary_color": "#64748b",
+    "accent_color": "#f59e0b",
+    "background_color": "#f8fafc",
+    "text_color": "#1e293b",
+    "logo_url": "https://your-cdn.com/logo.png",
+    "favicon_url": "https://your-cdn.com/favicon.ico"
+  },
+  "project_defaults": {
+    "license": "MIT",
+    "default_branch": "main",
+    "readme_style": "professional",
+    "include_badges": true,
+    "include_demo": true,
+    "include_screenshots": true,
+    "code_style": "modern-js",
+    "commit_style": "conventional"
+  },
+  "social_proof": {
+    "years_experience": "5+",
+    "projects_completed": "50+",
+    "technologies_used": "15+",
+    "github_stats_visible": true
+  },
+  "custom_sections": {
+    "about_me": "I'm a passionate full-stack developer with expertise in modern web technologies. I love solving complex problems and building applications that make a difference.",
+    "philosophy": "Clean code, continuous learning, and user-centric design are at the core of everything I build.",
+    "current_focus": "Currently exploring cloud architecture and machine learning integration in web applications."
+  }
+}

@@ -1,0 +1,658 @@
+{
+  "metadata": {
+    "author": "Ali Emad SALEH",
+    "title": "90 Professional IT Infrastructure Projects",
+    "description": "Comprehensive portfolio showcasing expertise in networking, infrastructure, security, and government technology solutions",
+    "totalProjects": 90,
+    "categories": 8,
+    "created": "2024-10-04"
+  },
+  "projects": {
+    "networking": [
+      {
+        "name": "enterprise-network-monitor",
+        "description": "Real-time network monitoring dashboard for 1600+ users with SNMP integration and alerting system",
+        "technologies": ["Python", "SNMP", "Flask", "Redis", "Grafana"],
+        "complexity": "High",
+        "priority": 1
+      },
+      {
+        "name": "vlan-config-automation",
+        "description": "Automated VLAN configuration tool for Cisco Catalyst switches with rollback functionality",
+        "technologies": ["Python", "Netmiko", "YAML", "Jinja2"],
+        "complexity": "Medium",
+        "priority": 2
+      },
+      {
+        "name": "qos-traffic-shaper",
+        "description": "Quality of Service management system for enterprise networks with bandwidth optimization",
+        "technologies": ["Python", "Scapy", "NetworkX", "SQLite"],
+        "complexity": "High",
+        "priority": 3
+      },
+      {
+        "name": "cisco-config-backup",
+        "description": "Automated backup solution for Cisco device configurations with version control",
+        "technologies": ["Python", "Git", "SSH", "Cron"],
+        "complexity": "Medium",
+        "priority": 4
+      },
+      {
+        "name": "network-topology-mapper",
+        "description": "Dynamic network topology discovery and visualization tool using LLDP and CDP protocols",
+        "technologies": ["Python", "NetworkX", "D3.js", "FastAPI"],
+        "complexity": "High",
+        "priority": 5
+      },
+      {
+        "name": "omada-controller-api",
+        "description": "RESTful API wrapper for TP-Link Omada SDN controller management",
+        "technologies": ["Node.js", "Express", "REST API", "JWT"],
+        "complexity": "Medium",
+        "priority": 6
+      },
+      {
+        "name": "network-security-scanner",
+        "description": "Comprehensive network vulnerability scanner with automated reporting",
+        "technologies": ["Python", "Nmap", "OpenVAS", "PostgreSQL"],
+        "complexity": "High",
+        "priority": 7
+      },
+      {
+        "name": "dhcp-lease-analyzer",
+        "description": "DHCP lease analysis and IP address management system",
+        "technologies": ["Python", "SQLite", "Tkinter", "Charts.js"],
+        "complexity": "Medium",
+        "priority": 8
+      },
+      {
+        "name": "wireless-site-survey",
+        "description": "WiFi site survey tool for optimal access point placement and configuration",
+        "technologies": ["Python", "WiFi API", "Matplotlib", "Folium"],
+        "complexity": "Medium",
+        "priority": 9
+      },
+      {
+        "name": "network-performance-analyzer",
+        "description": "Real-time network performance analysis with predictive alerting",
+        "technologies": ["Python", "InfluxDB", "Grafana", "Machine Learning"],
+        "complexity": "High",
+        "priority": 10
+      },
+      {
+        "name": "sdn-controller-dashboard",
+        "description": "Web-based dashboard for Software-Defined Network management",
+        "technologies": ["React", "Node.js", "WebSocket", "REST API"],
+        "complexity": "High",
+        "priority": 11
+      },
+      {
+        "name": "network-documentation-generator",
+        "description": "Automated network documentation generator from device configurations",
+        "technologies": ["Python", "Jinja2", "Markdown", "PDF"],
+        "complexity": "Medium",
+        "priority": 12
+      },
+      {
+        "name": "port-security-manager",
+        "description": "Centralized port security management for enterprise switches",
+        "technologies": ["Python", "SNMP", "SQLite", "Tkinter"],
+        "complexity": "Medium",
+        "priority": 13
+      },
+      {
+        "name": "network-change-tracker",
+        "description": "Track and audit network configuration changes across infrastructure",
+        "technologies": ["Python", "Git", "Diff", "Email"],
+        "complexity": "Medium",
+        "priority": 14
+      },
+      {
+        "name": "bandwidth-usage-reporter",
+        "description": "Comprehensive bandwidth usage reporting and analysis system",
+        "technologies": ["Python", "SNMP", "Matplotlib", "Excel"],
+        "complexity": "Medium",
+        "priority": 15
+      }
+    ],
+    "infrastructure": [
+      {
+        "name": "vmware-automation-suite",
+        "description": "Complete VMware vSphere automation for 140+ virtual machines management",
+        "technologies": ["Python", "VMware API", "Ansible", "YAML"],
+        "complexity": "High",
+        "priority": 1
+      },
+      {
+        "name": "proxmox-cluster-manager",
+        "description": "Centralized management dashboard for Proxmox virtualization clusters",
+        "technologies": ["Vue.js", "Node.js", "Proxmox API", "WebSocket"],
+        "complexity": "High",
+        "priority": 2
+      },
+      {
+        "name": "server-provisioning-engine",
+        "description": "Automated server provisioning system with Ansible playbooks",
+        "technologies": ["Ansible", "Python", "YAML", "Jinja2"],
+        "complexity": "High",
+        "priority": 3
+      },
+      {
+        "name": "docker-container-orchestrator",
+        "description": "Enterprise Docker container orchestration and management platform",
+        "technologies": ["Docker", "Python", "REST API", "Monitoring"],
+        "complexity": "High",
+        "priority": 4
+      },
+      {
+        "name": "haproxy-config-manager",
+        "description": "Dynamic HAProxy configuration management with health checks",
+        "technologies": ["Python", "HAProxy", "REST API", "Health Checks"],
+        "complexity": "Medium",
+        "priority": 5
+      },
+      {
+        "name": "infrastructure-cost-optimizer",
+        "description": "Infrastructure cost analysis and optimization recommendations engine",
+        "technologies": ["Python", "Pandas", "Matplotlib", "Excel"],
+        "complexity": "Medium",
+        "priority": 6
+      },
+      {
+        "name": "backup-automation-system",
+        "description": "Comprehensive backup automation for servers and databases",
+        "technologies": ["Python", "Rsync", "MySQL", "Cron"],
+        "complexity": "High",
+        "priority": 7
+      },
+      {
+        "name": "disaster-recovery-orchestrator",
+        "description": "Disaster recovery automation with RPO <15 minutes",
+        "technologies": ["Python", "Shell Scripts", "Database Replication"],
+        "complexity": "High",
+        "priority": 8
+      },
+      {
+        "name": "server-health-monitor",
+        "description": "Real-time server health monitoring with predictive analytics",
+        "technologies": ["Python", "Prometheus", "Grafana", "AlertManager"],
+        "complexity": "High",
+        "priority": 9
+      },
+      {
+        "name": "capacity-planning-tool",
+        "description": "Infrastructure capacity planning and resource forecasting tool",
+        "technologies": ["Python", "Machine Learning", "Pandas", "Plotly"],
+        "complexity": "High",
+        "priority": 10
+      },
+      {
+        "name": "patch-management-system",
+        "description": "Automated patch management for Windows and Linux servers",
+        "technologies": ["Python", "Ansible", "PowerShell", "Bash"],
+        "complexity": "High",
+        "priority": 11
+      },
+      {
+        "name": "cloud-migration-planner",
+        "description": "Cloud migration assessment and planning tool",
+        "technologies": ["Python", "AWS API", "Cost Calculator"],
+        "complexity": "Medium",
+        "priority": 12
+      },
+      {
+        "name": "infrastructure-compliance-checker",
+        "description": "Automated compliance checking for enterprise infrastructure",
+        "technologies": ["Python", "Ansible", "YAML", "Reporting"],
+        "complexity": "Medium",
+        "priority": 13
+      },
+      {
+        "name": "resource-utilization-analyzer",
+        "description": "Comprehensive resource utilization analysis and reporting",
+        "technologies": ["Python", "Prometheus", "Grafana", "SQL"],
+        "complexity": "Medium",
+        "priority": 14
+      },
+      {
+        "name": "infrastructure-documentation-portal",
+        "description": "Centralized infrastructure documentation and knowledge portal",
+        "technologies": ["React", "Node.js", "MongoDB", "Markdown"],
+        "complexity": "Medium",
+        "priority": 15
+      }
+    ],
+    "security": [
+      {
+        "name": "vulnerability-assessment-suite",
+        "description": "Comprehensive vulnerability assessment with 60% reduction achievements",
+        "technologies": ["Python", "OpenVAS", "Nessus API", "PostgreSQL"],
+        "complexity": "High",
+        "priority": 1
+      },
+      {
+        "name": "access-control-manager",
+        "description": "Centralized access control management for 1600+ users",
+        "technologies": ["Python", "LDAP", "Active Directory", "REST API"],
+        "complexity": "High",
+        "priority": 2
+      },
+      {
+        "name": "security-incident-response",
+        "description": "Automated security incident response and forensics platform",
+        "technologies": ["Python", "SIEM Integration", "ElasticSearch"],
+        "complexity": "High",
+        "priority": 3
+      },
+      {
+        "name": "penetration-testing-toolkit",
+        "description": "Custom penetration testing toolkit for network security assessments",
+        "technologies": ["Python", "Metasploit", "Nmap", "Custom Scripts"],
+        "complexity": "High",
+        "priority": 4
+      },
+      {
+        "name": "encryption-key-manager",
+        "description": "Enterprise encryption key management with AES-256 implementation",
+        "technologies": ["Python", "Cryptography", "HSM", "Key Rotation"],
+        "complexity": "High",
+        "priority": 5
+      },
+      {
+        "name": "security-audit-logger",
+        "description": "Comprehensive security audit logging and analysis system",
+        "technologies": ["Python", "Syslog", "ElasticSearch", "Kibana"],
+        "complexity": "Medium",
+        "priority": 6
+      },
+      {
+        "name": "firewall-rule-optimizer",
+        "description": "Firewall rule analysis and optimization tool",
+        "technologies": ["Python", "iptables", "pfSense API", "Network Analysis"],
+        "complexity": "Medium",
+        "priority": 7
+      },
+      {
+        "name": "security-compliance-dashboard",
+        "description": "Real-time security compliance monitoring dashboard",
+        "technologies": ["React", "Node.js", "Security APIs", "Charts"],
+        "complexity": "Medium",
+        "priority": 8
+      },
+      {
+        "name": "threat-intelligence-aggregator",
+        "description": "Threat intelligence aggregation and analysis platform",
+        "technologies": ["Python", "APIs", "Machine Learning", "Threat Feeds"],
+        "complexity": "High",
+        "priority": 9
+      },
+      {
+        "name": "security-awareness-platform",
+        "description": "Security awareness training and phishing simulation platform",
+        "technologies": ["PHP", "MySQL", "Email Templates", "Analytics"],
+        "complexity": "Medium",
+        "priority": 10
+      }
+    ],
+    "support": [
+      {
+        "name": "zendesk-automation-suite",
+        "description": "Comprehensive Zendesk automation achieving 85% SLA resolution",
+        "technologies": ["Python", "Zendesk API", "Automation", "Analytics"],
+        "complexity": "High",
+        "priority": 1
+      },
+      {
+        "name": "servicenow-integration-platform",
+        "description": "ServiceNow integration platform for enterprise IT operations",
+        "technologies": ["Python", "ServiceNow API", "REST", "Workflows"],
+        "complexity": "High",
+        "priority": 2
+      },
+      {
+        "name": "multilingual-support-system",
+        "description": "Arabic/English multilingual technical support system",
+        "technologies": ["PHP", "MySQL", "Translation API", "Laravel"],
+        "complexity": "Medium",
+        "priority": 3
+      },
+      {
+        "name": "knowledge-base-builder",
+        "description": "Dynamic knowledge base with AI-powered search capabilities",
+        "technologies": ["Python", "ElasticSearch", "NLP", "React"],
+        "complexity": "High",
+        "priority": 4
+      },
+      {
+        "name": "ticket-routing-engine",
+        "description": "Intelligent ticket routing based on content analysis and expertise",
+        "technologies": ["Python", "Machine Learning", "NLP", "APIs"],
+        "complexity": "High",
+        "priority": 5
+      },
+      {
+        "name": "sla-monitoring-dashboard",
+        "description": "Real-time SLA monitoring and performance analytics dashboard",
+        "technologies": ["React", "Node.js", "Charts.js", "WebSocket"],
+        "complexity": "Medium",
+        "priority": 6
+      },
+      {
+        "name": "crisis-management-portal",
+        "description": "Crisis management and stakeholder communication platform",
+        "technologies": ["Vue.js", "Node.js", "WebSocket", "SMS API"],
+        "complexity": "Medium",
+        "priority": 7
+      },
+      {
+        "name": "user-training-platform",
+        "description": "Interactive user training platform with progress tracking",
+        "technologies": ["React", "Node.js", "MongoDB", "Video Streaming"],
+        "complexity": "Medium",
+        "priority": 8
+      },
+      {
+        "name": "support-analytics-engine",
+        "description": "Comprehensive support analytics and performance insights",
+        "technologies": ["Python", "Pandas", "Matplotlib", "SQL"],
+        "complexity": "Medium",
+        "priority": 9
+      },
+      {
+        "name": "remote-assistance-tool",
+        "description": "Secure remote assistance tool for technical support",
+        "technologies": ["Python", "WebRTC", "Encryption", "Screen Sharing"],
+        "complexity": "High",
+        "priority": 10
+      }
+    ],
+    "government": [
+      {
+        "name": "barzah-service-center-platform",
+        "description": "Complete digital service center platform serving 50,000+ citizens",
+        "technologies": ["React", "Node.js", "PostgreSQL", "Queue Management"],
+        "complexity": "High",
+        "priority": 1
+      },
+      {
+        "name": "digital-queue-management",
+        "description": "Advanced digital queue management with 40% wait time reduction",
+        "technologies": ["React", "WebSocket", "Redis", "SMS Integration"],
+        "complexity": "High",
+        "priority": 2
+      },
+      {
+        "name": "bilingual-citizen-portal",
+        "description": "Arabic/English citizen services portal with accessibility features",
+        "technologies": ["React", "i18n", "Accessibility", "Progressive Web App"],
+        "complexity": "Medium",
+        "priority": 3
+      },
+      {
+        "name": "government-api-gateway",
+        "description": "Centralized API gateway for government service integration",
+        "technologies": ["Node.js", "API Gateway", "Rate Limiting", "OAuth2"],
+        "complexity": "High",
+        "priority": 4
+      },
+      {
+        "name": "citizen-feedback-system",
+        "description": "Comprehensive citizen feedback and satisfaction measurement system",
+        "technologies": ["Vue.js", "Node.js", "Analytics", "Reporting"],
+        "complexity": "Medium",
+        "priority": 5
+      },
+      {
+        "name": "document-digitization-platform",
+        "description": "Government document digitization and management platform",
+        "technologies": ["Python", "OCR", "Document Processing", "Storage"],
+        "complexity": "High",
+        "priority": 6
+      },
+      {
+        "name": "e-governance-dashboard",
+        "description": "Executive dashboard for e-governance metrics and KPIs",
+        "technologies": ["React", "D3.js", "Real-time Analytics", "Charts"],
+        "complexity": "Medium",
+        "priority": 7
+      },
+      {
+        "name": "public-service-automation",
+        "description": "Automated public service request processing system",
+        "technologies": ["Python", "Workflow Engine", "Database", "Notifications"],
+        "complexity": "High",
+        "priority": 8
+      },
+      {
+        "name": "inter-agency-integration",
+        "description": "Integration platform connecting 9 governmental entities",
+        "technologies": ["API Integration", "Message Queue", "Data Sync"],
+        "complexity": "High",
+        "priority": 9
+      },
+      {
+        "name": "citizen-data-protection",
+        "description": "Citizen data protection and privacy compliance system",
+        "technologies": ["Python", "Encryption", "GDPR Compliance", "Audit"],
+        "complexity": "High",
+        "priority": 10
+      }
+    ],
+    "webdev": [
+      {
+        "name": "laravel-enterprise-cms",
+        "description": "Enterprise-grade CMS built with Laravel for government agencies",
+        "technologies": ["Laravel", "PHP", "MySQL", "Redis"],
+        "complexity": "High",
+        "priority": 1
+      },
+      {
+        "name": "codeigniter-api-framework",
+        "description": "RESTful API framework built with CodeIgniter for legacy systems",
+        "technologies": ["CodeIgniter", "PHP", "JWT", "API Documentation"],
+        "complexity": "Medium",
+        "priority": 2
+      },
+      {
+        "name": "bitrix-crm-customization",
+        "description": "Custom Bitrix CRM modules for tourism and travel operations",
+        "technologies": ["PHP", "Bitrix", "MySQL", "JavaScript"],
+        "complexity": "Medium",
+        "priority": 3
+      },
+      {
+        "name": "microservices-architecture",
+        "description": "Microservices architecture implementation for scalable web applications",
+        "technologies": ["Node.js", "Docker", "Kubernetes", "API Gateway"],
+        "complexity": "High",
+        "priority": 4
+      },
+      {
+        "name": "progressive-web-app",
+        "description": "Progressive Web Application for government services",
+        "technologies": ["React", "Service Workers", "PWA", "Offline Support"],
+        "complexity": "Medium",
+        "priority": 5
+      },
+      {
+        "name": "real-time-collaboration-platform",
+        "description": "Real-time collaboration platform for distributed teams",
+        "technologies": ["Socket.io", "React", "Node.js", "WebRTC"],
+        "complexity": "High",
+        "priority": 6
+      },
+      {
+        "name": "database-migration-tool",
+        "description": "Database migration and synchronization tool for web applications",
+        "technologies": ["PHP", "MySQL", "PostgreSQL", "Migration Scripts"],
+        "complexity": "Medium",
+        "priority": 7
+      },
+      {
+        "name": "content-delivery-optimization",
+        "description": "Content delivery optimization system for government websites",
+        "technologies": ["CDN", "Caching", "Performance Optimization"],
+        "complexity": "Medium",
+        "priority": 8
+      },
+      {
+        "name": "web-accessibility-toolkit",
+        "description": "Web accessibility compliance toolkit for government websites",
+        "technologies": ["JavaScript", "WCAG", "Accessibility Testing"],
+        "complexity": "Medium",
+        "priority": 9
+      },
+      {
+        "name": "api-performance-monitor",
+        "description": "API performance monitoring and optimization platform",
+        "technologies": ["Node.js", "Monitoring", "Analytics", "Alerts"],
+        "complexity": "Medium",
+        "priority": 10
+      }
+    ],
+    "devops": [
+      {
+        "name": "ci-cd-pipeline-automation",
+        "description": "Complete CI/CD pipeline automation for government applications",
+        "technologies": ["Jenkins", "Docker", "Kubernetes", "GitLab CI"],
+        "complexity": "High",
+        "priority": 1
+      },
+      {
+        "name": "infrastructure-as-code",
+        "description": "Infrastructure as Code implementation using Terraform and Ansible",
+        "technologies": ["Terraform", "Ansible", "AWS", "Azure"],
+        "complexity": "High",
+        "priority": 2
+      },
+      {
+        "name": "monitoring-alerting-system",
+        "description": "Comprehensive monitoring and alerting system for 99.9% uptime",
+        "technologies": ["Prometheus", "Grafana", "AlertManager", "ELK Stack"],
+        "complexity": "High",
+        "priority": 3
+      },
+      {
+        "name": "container-orchestration-platform",
+        "description": "Enterprise container orchestration with Kubernetes",
+        "technologies": ["Kubernetes", "Docker", "Helm", "Istio"],
+        "complexity": "High",
+        "priority": 4
+      },
+      {
+        "name": "automated-testing-framework",
+        "description": "Comprehensive automated testing framework for web applications",
+        "technologies": ["Selenium", "Jest", "Pytest", "CI Integration"],
+        "complexity": "Medium",
+        "priority": 5
+      },
+      {
+        "name": "deployment-automation-engine",
+        "description": "Zero-downtime deployment automation for critical systems",
+        "technologies": ["Blue-Green Deployment", "Kubernetes", "Monitoring"],
+        "complexity": "High",
+        "priority": 6
+      },
+      {
+        "name": "configuration-management-system",
+        "description": "Centralized configuration management for distributed systems",
+        "technologies": ["Consul", "Vault", "Configuration Templates"],
+        "complexity": "Medium",
+        "priority": 7
+      },
+      {
+        "name": "log-aggregation-platform",
+        "description": "Centralized log aggregation and analysis platform",
+        "technologies": ["ELK Stack", "Fluentd", "Log Analysis"],
+        "complexity": "Medium",
+        "priority": 8
+      },
+      {
+        "name": "security-scanning-pipeline",
+        "description": "Automated security scanning integration in CI/CD pipeline",
+        "technologies": ["OWASP ZAP", "SonarQube", "Security Testing"],
+        "complexity": "Medium",
+        "priority": 9
+      },
+      {
+        "name": "performance-optimization-toolkit",
+        "description": "Application performance optimization and monitoring toolkit",
+        "technologies": ["APM Tools", "Performance Testing", "Optimization"],
+        "complexity": "Medium",
+        "priority": 10
+      }
+    ],
+    "tools": [
+      {
+        "name": "system-diagnostic-suite",
+        "description": "Comprehensive system diagnostic tool for Windows and Linux servers",
+        "technologies": ["Python", "System APIs", "Performance Monitoring"],
+        "complexity": "Medium",
+        "priority": 1
+      },
+      {
+        "name": "network-troubleshooting-toolkit",
+        "description": "Advanced network troubleshooting toolkit for enterprise environments",
+        "technologies": ["Python", "Scapy", "Network Analysis", "Wireshark"],
+        "complexity": "High",
+        "priority": 2
+      },
+      {
+        "name": "log-analysis-engine",
+        "description": "Intelligent log analysis engine with pattern recognition",
+        "technologies": ["Python", "Machine Learning", "NLP", "Analytics"],
+        "complexity": "High",
+        "priority": 3
+      },
+      {
+        "name": "performance-benchmarking-tool",
+        "description": "System performance benchmarking and comparison tool",
+        "technologies": ["Python", "Benchmarking", "Statistics", "Reporting"],
+        "complexity": "Medium",
+        "priority": 4
+      },
+      {
+        "name": "configuration-validator",
+        "description": "Configuration file validation and compliance checker",
+        "technologies": ["Python", "YAML", "JSON", "Schema Validation"],
+        "complexity": "Medium",
+        "priority": 5
+      },
+      {
+        "name": "resource-usage-optimizer",
+        "description": "System resource usage optimization and recommendation engine",
+        "technologies": ["Python", "System Monitoring", "Optimization"],
+        "complexity": "Medium",
+        "priority": 6
+      },
+      {
+        "name": "database-health-checker",
+        "description": "Database health monitoring and optimization tool",
+        "technologies": ["Python", "SQL", "Database APIs", "Performance"],
+        "complexity": "Medium",
+        "priority": 7
+      },
+      {
+        "name": "service-dependency-mapper",
+        "description": "Service dependency mapping and visualization tool",
+        "technologies": ["Python", "Graph Database", "Visualization"],
+        "complexity": "Medium",
+        "priority": 8
+      },
+      {
+        "name": "system-inventory-manager",
+        "description": "Comprehensive system inventory and asset management tool",
+        "technologies": ["Python", "Database", "Asset Tracking", "Reports"],
+        "complexity": "Medium",
+        "priority": 9
+      },
+      {
+        "name": "automated-report-generator",
+        "description": "Automated report generation for system metrics and KPIs",
+        "technologies": ["Python", "Report Templates", "Charts", "PDF"],
+        "complexity": "Medium",
+        "priority": 10
+      }
+    ]
+  }
+}
