@@ -3,9 +3,9 @@
  * Provides offline functionality and caching strategies
  */
 
-const CACHE_NAME = 'portfolio-v1.0.0';
-const STATIC_CACHE = 'portfolio-static-v1.0.0';
-const DYNAMIC_CACHE = 'portfolio-dynamic-v1.0.0';
+const CACHE_NAME = 'portfolio-v1.0.1';
+const STATIC_CACHE = 'portfolio-static-v1.0.1';
+const DYNAMIC_CACHE = 'portfolio-dynamic-v1.0.1';
 
 // Resources to cache immediately
 const STATIC_ASSETS = [
